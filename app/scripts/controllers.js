@@ -32,13 +32,25 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
+  // Base de donner Sqlite
+  // TODO : Rechercher la commande pour installer sqlite
 
-.controller('SearchCtrl', function($scope) {
-        $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-        $scope.series = ['Series A', 'Series B'];
+  // Lien API
+  // TODO: Faire le controller pour lier l'api et l'appli
+
+// Chart Poids
+.controller('ChartCtrl', function($scope) {
+        $scope.labels = ["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70"];
+        $scope.series = ['Normal', 'Votre Poids'];
+        // TODO: Récuperer les informations de la base SQLite
+        //Faire un tableau avec la courbe de moyenne de poids
+        var minpoids = [10, 20, 30, 40, 50, 60, 70, 80];
+        var poids = [15, 25, 35, 45, 55, 65, 75, 85];
+        var maxpoids = [20, 30, 40, 50, 60, 70, 80, 90, 100];
         $scope.data = [
-            [65, 59, 80, 81, 56, 55, 40],
-            [28, 48, 40, 19, 86, 27, 90]
+            minpoids,
+            poids,
+            maxpoids
         ];
         $scope.onClick = function (points, evt) {
             console.log(points, evt);

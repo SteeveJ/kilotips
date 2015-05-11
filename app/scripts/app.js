@@ -29,17 +29,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'chart.js'])
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
-
+    /* return template Progression */
   .state('app.progression', {
     url: "/progression",
     views: {
       'menuContent': {
         templateUrl: "templates/progression.html",
-          controller: 'SearchCtrl'
+          controller: 'ChartCtrl'
       }
     }
   })
-
+  /* return template Journal */
   .state('app.journal', {
     url: "/journal",
     views: {
@@ -48,15 +48,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'chart.js'])
       }
     }
   })
-    .state('app.home', {
-      url: "/home",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/home.html",
-          controller: 'PlaylistsCtrl'
-        }
+    /* return template Home */
+  .state('app.home', {
+    url: "/home",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/home.html"
       }
-    })
+    }
+  })
+
+  .state('app.calories', {
+    url: "/calories",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/calories.html"
+      }
+    }
+  })
+  .state('app.editProfile', {
+    url: "/profile/edit",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/editProfile.html"
+      }
+    }
+  })
 
 ;
   // if none of the above states are matched, use this as the fallback

@@ -1,1 +1,17 @@
-/* Empty. Add your own CSS if you like */
+::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color:    #000;
+}
+:-moz-placeholder, textarea:-moz-placeholder {
+  color:    #000;
+}
+::-moz-placeholder, textarea::-moz-placeholder {
+  color:    #000;
+}
+:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color:    #000;
+}
+
+button>a{
+  text-decoration: none;
+  color: lawngreen;
+}
