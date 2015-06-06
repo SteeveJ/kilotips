@@ -1,34 +1,36 @@
-<ion-view view-title="Edit Profil">
+<ion-view view-title="Editer Profile">
   <ion-content>
+    <h2 class="title">Bienvenue </h2>
+
     <div class="list">
       <label class="item item-input">
         <span class="input-label">Name :</span>
-        <input type="text" placeholder="70">
+        <input type="text" value="{{ userCo.username }}">
       </label>
       <label class="item item-input">
         <span class="input-label">Sexe :</span>
-        <input type="text" placeholder="">
+        <input type="text" value="{{ sexe }}" disabled>
       </label>
       <label class="item item-input">
         <span class="input-label">Poids :</span>
-        <input type="text" placeholder="">
+        <input type="text" value="{{ userCo.poids }}"> Kg
       </label>
       <label class="item item-input">
         <span class="input-label">Taille :</span>
-        <input type="text" placeholder="">
+        <input type="text" value="{{ userCo.taille}}"> cm
       </label>
       <label class="item item-input">
         <span class="input-label">Objectif :</span>
-        <input type="text" placeholder="">
+        <input type="text" value="{{ userCo.objectif }}">Kg
       </label>
     </div>
 
+    <button ng-click="edit()" class="button button-block button-positive">Valider</button>
+    <button ng-click="returnHome()" class="button button-block button-positive">Retour</button>
 
-    <div class="row">
-      <div class="col">
-        <button class="button button-block button-outline button-balanced"><a href="#/app/home">Valider</a></button>
-      </div>
-    </div>
+
+
   </ion-content>
 </ion-view>
+
 

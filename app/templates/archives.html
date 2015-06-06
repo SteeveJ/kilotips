@@ -1,0 +1,59 @@
+<ion-view view-title="Archives">
+  <ion-content>
+  <h2>Date de l'archive</h2>
+    <div class="row responsive-sm">
+      <div class="col">
+        <p>Calorie Consomées ( progress bar)</p>
+        <!-- http://codepen.io/joe-watkins/pen/cvxuJ  site pour la progress bar -->
+        <div ng-app="myApp" ng-controller="progressBar" class="container">
+          <progressbar class="progress-striped active" animate="true" max="100" value="progressValue" type="success"><i><span count-to="{{countTo}}" duration="1" count-from="{{countFrom}}"></span> / 100</i></progressbar>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="item item-divider">
+        Petit-dej
+      </div>
+        <label class="item item-radio">
+          <input type="radio" name="group1">
+          <div class="item-content">
+            Cereales
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+          <input type="radio" name="group2">
+          <div class="item-content">
+            Lait
+          </div>
+      <div class="item item-divider">
+        dejeuné
+      </div>
+        <label class="item item-radio">
+          <input type="radio" name="group4">
+          <div class="item-content">
+            Dombré & crabes
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+      <div class="item item-divider">
+        dinné
+      </div>
+        <label class="item item-radio">
+          <input type="radio" name="group7">
+          <div class="item-content">
+            salade
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>      
+    </div>
+
+    <div class="row">
+      <a href="#/app/diagramme">
+        <button class="button button-block button-balanced">
+          Voir le diagramme
+        </button>
+      </a>
+    </div> 
+  </ion-content>
+</ion-view>

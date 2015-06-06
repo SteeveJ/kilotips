@@ -1,36 +1,42 @@
 <ion-view view-title="Profil">
   <ion-content>
+    <h2 class="title">Bienvenue </h2>
+    <div class="row responsive-sm">
+      <div class="col">
+        <p>Calorie Consomées</p>
+        <!-- http://codepen.io/joe-watkins/pen/cvxuJ  site pour la progress bar -->
+
+      </div>
+    </div>
+
     <div class="list">
       <label class="item item-input">
         <span class="input-label">Name :</span>
-        <input type="text" placeholder="70" disabled>
+        <input type="text" value="{{ userCo.username }}" disabled>
       </label>
       <label class="item item-input">
         <span class="input-label">Sexe :</span>
-        <input type="text" placeholder="" disabled>
+        <input type="text" value="{{ sexe }}" disabled>
       </label>
       <label class="item item-input">
         <span class="input-label">Poids :</span>
-        <input type="text" placeholder="" disabled>
+        <input type="text" value="{{ userCo.poids }} Kg" disabled>
       </label>
       <label class="item item-input">
         <span class="input-label">Taille :</span>
-        <input type="text" placeholder="" disabled>
+        <input type="text" value="{{ userCo.taille}} cm" disabled>
       </label>
       <label class="item item-input">
         <span class="input-label">Objectif :</span>
-        <input type="text" placeholder="" disabled>
+        <input type="text" value="{{ userCo.objectif }} Kg" disabled>
       </label>
     </div>
 
+    <button ng-click="edit()" class="button button-block button-positive">Editer</button>
 
-    <div class="row">
-      <div class="col">
-        <a href="#/app/profile/edit"><button class="button button-block button-outline button-balanced">Editer</button></a>
-      </div>
-    </div>
 
 
   </ion-content>
 </ion-view>
+
 
