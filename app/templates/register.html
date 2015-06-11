@@ -1,29 +1,53 @@
 <ion-view view-title="Connexion">
   <ion-content>
     <h2 class="title">Vous êtes nouveau ? Bienvenue ! </h2>
+    <div ng-class="class" role="alert">L'utilisateur Existe déjà.</div>
     <div class="list">
-      <label class="item item-input item-floating-label">
+      <label class="item item-input">
         <span class="input-label">Nom</span>
-        <input type="text" placeholder="First Name">
+        <input type="text" ng-model="user.username" placeholder="First Name" required>
       </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Prénom</span>
-        <input type="text" placeholder="Last Name">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Email</span>
-        <input type="text" placeholder="Email">
-      </label>
-          <label class="item item-input item-floating-label">
+      <label class="item item-input">
         <span class="input-label">Mot de passe</span>
-        <input type="password" placeholder="Mot de passe">
+        <input type="password" placeholder="Mot de passe" ng-model="user.password" required>
       </label>
-    </div>
-    <button class="button button-block button-balanced">
+
+      <label class="item item-input item-select" >
+        <div class="input-label">
+          Taille
+        </div>
+        <select ng-model="user.taille" required>
+          <option ng-repeat="n in [100, 200] | makeRange">{{n}}</option>
+        </select>
+      </label>
+      <label class="item item-input item-select" >
+        <div class="input-label">
+          Poid
+        </div>
+        <select ng-model="user.poid" required>
+          <option ng-repeat="n in [40, 300] | makeRange">{{n}}</option>
+        </select>
+      </label>
+      <label class="item item-input item-select" >
+        <div class="input-label">
+          Sexe
+        </div>
+        <select ng-model="user.sexe" required>
+          <option selected>Femme</option>
+          <option>Homme</option>
+        </select>
+      </label>
+      <label class="item item-input item-select" >
+        <div class="input-label">
+          Objectif
+        </div>
+        <select ng-model="user.objectif" required>
+          <option ng-repeat="n in [40, 300] | makeRange">{{n}}</option>
+        </select>
+      </label>
+    <button class="button button-block button-balanced" ng-click="signup(user)">
       S'inscrire
     </button>
-
   <a href="#/app/connexion"><button class="button button-clear button-positive">Déjà inscrit ? Connexion</button></a>
-
   </ion-content>
 </ion-view>

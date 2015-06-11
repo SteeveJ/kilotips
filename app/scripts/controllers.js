@@ -2,7 +2,27 @@
 var save = {};
 var userConnected;
 angular.module('starter.controllers', [])
-
+  .filter('makeRange', function() {
+    return function(input) {
+      var lowBound, highBound;
+      switch (input.length) {
+        case 1:
+          lowBound = 0;
+          highBound = parseInt(input[0]) - 1;
+          break;
+        case 2:
+          lowBound = parseInt(input[0]);
+          highBound = parseInt(input[1]);
+          break;
+        default:
+          return input;
+      }
+      var result = [];
+      for (var i = lowBound; i <= highBound; i++)
+        result.push(i);
+      return result;
+    };
+  })
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
   $scope.loginData = {};
@@ -145,49 +165,75 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('createUser', function($scope, $http)
+  .controller('createUser', function($scope, $http, $state)
   {
-
+    $scope.class = "hidden";
     $http({method: 'GET', url: 'http://jerent-steeve.com/APIkilotip/web/app.php/user/api_user'})
       .success(function(data)
       {
-        //console.log(data);
+
         users = data;
         var memory = {};
         // function validation du username et du password
+        console.log("date");
+        console.log(users.length);
         $scope.signup = function(user){
+
           // variable
           var doublon = true;
+          console.log(user);
           memory = angular.copy(user);
 
+          console.log(memory);
+
+          var compteur = 0;
+          var booleanSex = 1;
+          var Api = "http://jerent-steeve.com/APIkilotip/web/app.php/user";
           angular.forEach(users, function(value){
-            if(doublon){
+            if(doublon == true){
               var username = value.username;
-              var Api = "http://127.0.0.1:8000/user/";
+              compteur++;
+              console.log("Decompte : "+compteur);
               if(memory.username.toUpperCase() === username.toUpperCase()){
                 // L'utilisateur existe
                 console.log('Il existe');
-              }else{
-                console.log('Allé on retour un true')
+                if ($scope.class === "hidden") $scope.class = "assertive";
+
+                //$scope.erreur = "";
+                //scope.user.username = "";
+
+
+              }if(compteur == users.length && memory.username.toUpperCase() != username.toUpperCase()){
+                if(user.sexe == "Femme"){
+                  booleanSex = 0;
+                }
+                doublon = false;
+                console.log(doublon);
               }
             }
           });
-          if(validated === true){
-            /*$http.get(Api+"/"+$scope.username+"/"+$scope.password+"/"++"/"+$scope.username+"/"+$scope.username+"/"+$scope.username)
-            .success(function(data, status, headers, config) {
+          console.log('next');
 
-              console.log('? ? ?');
+          if(doublon === false){
+            var urlRequest = Api+"/create/"+user.username +"/"+user.password +"/"+ booleanSex +"/"+user.poid+"/"+user.taille+"/"+user.objectif;
+            $http.get(urlRequest)
+            .success(function(data, status, headers, config) {
+                userConnected = angular.copy(user);
+                console.log('réussi');
+                $state.go('app.home');
+
             })
               .error(function(data, status, headers, config) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
-                var line = '--------------------------------------'
+                var line = '--------------------------------------';
                 console.log(status);
                 console.log(line);
                 console.log(headers);
                 console.log(line);
                 console.log(config);
-              });*/
+                console.log(urlRequest);
+              });
           }
 
         };

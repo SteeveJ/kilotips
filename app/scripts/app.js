@@ -23,7 +23,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'chart.js', 'ngCordov
 
 
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
   $stateProvider
 
     .state('login', {
@@ -79,14 +81,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'chart.js', 'ngCordov
     })
     .state('editProfile', {
       url: "/profile/edit",
-      templateUrl: "../templates/editProfile.html",
+      templateUrl: "templates/editProfile.html",
       controller: 'ProfileEditCtrl'
     })
 
         /* return template register */
     .state('register', {
       url: "/inscription",
-      templateUrl: "templates/register.html"
+      templateUrl: "templates/register.html",
+      controller: "createUser"
     })
 
           /* return template archives */
